@@ -1,13 +1,40 @@
 body{
     min-width: 1500px;
+    background-color: #ebebeb;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+/*定义滚动条整体宽度*/
+::-webkit-scrollbar{
+    width: 13px;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
 }
 #guide_box{
-    position: relative;
+    position: fixed;
+    z-index: 3;
     font-size: 25px;
-    padding-top: 10px;
 	height: 50px;
 	width: 100%;
 	background-color: #fdfdfd;
+}
+#guide_item{
+    position: relative;
+    font-size: 25px;
+    padding-top: 10px;
+    height: 50px;
+    width: 100%;
+    background-color: #fdfdfd;
 }
 #guideleft_box{
     height: 40px;
@@ -31,7 +58,7 @@ body{
     outline: none;
     font-size: 15px;
     text-indent: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 #function_area_pic{
     float: left;
@@ -50,29 +77,56 @@ body{
     margin-left: 60px;
 }
 #acount_pic{
+    display: none;
     float: left;
-    margin-left: 250px;
+    margin-left: 100px;
+}
+#acount_sec_box{
+    border-radius: 10px;
+    display: none;
+    text-align: center;
+    float: left;
+    height: 38px;
+    width: 100px;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow: 0px 3px 10px #666666;
 }
 #acount_page{
     display: none;
     z-index: 1;
     right: 0px;
-    width: 350px;
+    width: 250px;
     height: 720px;
     margin-top: -10px;
     position: absolute;
     background-color: white;
     box-shadow: 0px 3px 10px #666666;
 }
+#acount_btn{
+    font-size: 20px;
+    line-height: 30px;
+    outline: none;
+    background-color: white;
+    border: 1px solid transparent;
+}
 #backcolor_box{
-    height: 80px;
-    margin-bottom: -80px;
-    box-shadow: 5px 5px 3px #666666;
-    background-image: linear-gradient(to right, rgb(232, 81, 134), #a63db6);
+    z-index: -1;
+    height: 140px;
+    margin-bottom: -90px;
+    box-shadow: 3px 1px 3px #666666;
+    /*to right, rgb(15, 83, 44), #3f4fdd 浅绿蓝*/
+    /*to right, rgba(71, 70, 66, 0.85), #b9b9bb 灰白*/
+    background-image: linear-gradient(to right, rgba(16, 23, 41, 0.85), #430623);
 }
 #backcolor1_box{
-    height: 400px;
-    background-color: #1E2E46;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 450px;
+    margin-bottom: -90px;
+    box-shadow: 3px 1px 3px #666666;
+    background-image: linear-gradient(to right, rgb(232, 81, 134), #a63db6);
 }
 content{
     display: block;
@@ -80,10 +134,11 @@ content{
     margin-left: 15%;
     margin-right: 18%;
 }
-#topic_box{
+.topic_box{
+    padding-top: 20px;
     font-size: 15px;
     width: 65%;
-    height: 110px;
+    height:150px;
     position: relative;
     border-radius: 10px;
     background-color: white;
@@ -91,18 +146,19 @@ content{
     margin-bottom: 30px;
     box-shadow: 0px 3px 10px #666666;
 }
-#pic1{
+.pic1{
     height: 40px;
     width: 40px;
     float: left;
-    margin: 10px 10px 10px 50px;
+    margin: 0px 10px 10px 50px;
 }
-#circle_btn_box{
+.circle_btn_box{
     position: absolute;
     left: 50px;
-    top: 53px;
+    top: 57px;
     width: 40px;
     display: flex;
+    display: none;
     justify-content: space-around;
 }
 .circle_btn{
@@ -110,42 +166,50 @@ content{
     width: 10px;
     border-radius: 5px;
 }
-#red{
+.red{
     background-color: red;
 }
-#yellow{
+.yellow{
     background-color: #ffdc40;
 }
-#blue{
+.blue{
     background-color: blue;
 }
-#user_box{
-    padding-top: 5px;
+.user_box{
+    position: relative;
 }
-#ut_title{
+.ut_title{
     font-size: 18px;
-    line-height: 25px;
+    line-height: 40px;
 }
-#show_more{
+.user_centence{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.show_more{
     color: #2816ac;
     background-color: white;
     outline: none;
     border: 1px solid transparent;
 }
-#user_infor{
+.user_infor{
+    position: absolute;
+    bottom: 20px;
     float: left;
+    display: block;
     color: #666666;
     font-size: 13px;
-    margin-top: 5px;
     margin-left: 50px;
 }
-#function_box{
+.user_function_box{
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
     float: right;
     color: #666666;
     font-size: 13px;
-    margin-top: 5px;
 }
-#function_box > p{
+.user_function_box > p{
     display: inline;
     margin-left: 20px;
 }
@@ -154,17 +218,16 @@ content{
     float: right;
     font-size: 15px;
     width: 30%;
-    height: 110px;
+    height: 120px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0px 3px 10px #666666;
 }
 #intro_text{
-    height: 50px;
     width: 260px;
     display: block;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: 10px;
     line-height: 50px;
     font-size: 20px;
     color: #666666;
@@ -173,7 +236,6 @@ content{
 #login_choose_box{
     display: flex;
     justify-content:space-around;
-    height: 40px;
     width: 280px;
     margin: 0 auto;
 }
@@ -182,6 +244,7 @@ content{
     width: 70px;
     outline: none;
     font-size: 20px;
+    line-height: 40px;
     border-radius: 10px;
     background-color: white;
     border: 1px solid transparent;
@@ -191,7 +254,7 @@ content{
     font-size: 15px;
     width: 100%;
     height: 200px;
-    margin-top: 45px;
+    margin-top: 56px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0px 3px 10px #666666;
@@ -237,47 +300,4 @@ content{
     background-color: white;
     border: 1px solid transparent;
     box-shadow: 0px 3px 10px #666666;
-}
-#new_topic_box{
-    display: none;
-    font-size: 15px;
-    width: 65%;
-    height: 160px;
-    position: relative;
-    border-radius: 10px;
-    background-color: white;
-    padding-right: 50px;
-    margin-bottom: 30px;
-    box-shadow: 0px 3px 10px #666666;
-}
-#new_topic_title{
-    margin-top: 5px;
-    display: block;
-    width: 300px;
-    height: 20px;
-}
-#new_topic_text{
-    margin-top: 10px;
-    display: block;
-    width: 500px;
-    height: 60px;
-    resize: none;
-}
-/*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
-}
-/*定义滚动条整体宽度*/
-::-webkit-scrollbar{
-    width: 13px;
-}
-/*定义滑块 内阴影+圆角*/
-::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
 }
