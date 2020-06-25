@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="123123">
+    <output-path>$PROJECT_DIR$/out/artifacts/123123</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Kroraina" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Kroraina/web/Web" />
+    </root>
+  </artifact>
+</component>
