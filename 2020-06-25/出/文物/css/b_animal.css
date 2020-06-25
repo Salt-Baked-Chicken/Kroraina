@@ -1,0 +1,47 @@
+/*#first_title_text:hover{*/
+    /*color:rebeccapurple;*/
+/*}*/
+/*#icon-th-large-outline:hover{*/
+    /*animation: daxiao 1.5s linear infinite;*/
+/*}*/
+
+/*@keyframes daxiao{*/
+    /*20%{*/
+        /*transform: scale(1.1);*/
+    /*}*/
+    /*40%{*/
+        /*transform: scale(1.2);*/
+    /*}*/
+
+/*}*/
+#globe_pic,#function_area_pic,#bank_pic{
+    transition:transform 0.2s;
+}
+#globe_pic:hover,#function_area_pic:hover,#bank_pic:hover{
+    /*animation: daxiao 1s linear;*/
+    transform: scale(1.2);
+}
+#login_choose_box>button{
+    transition:transform 0.2s;
+}
+#login_choose_box>button:hover{
+    transform: translateY(5px);
+}
+#search_pic{
+    transition:transform 0.5s;
+}
+#search_pic:hover{
+    transform: translateX(10px);
+}
+#acount_pic{
+    transition:transform 5s;
+}
+#acount_pic:hover{
+    transform:  rotateZ(-36000deg);
+}
+/*#globe_pic{*/
+    /*transition:transform 0.5s;*/
+/*}*/
+/*#globe_pic:hover{*/
+    /*transform: translateY(-8px);*/
+/*}*/
