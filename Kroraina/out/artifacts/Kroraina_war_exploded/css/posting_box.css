@@ -1,0 +1,30 @@
+.posting_box{
+    display: none;
+    position: relative;
+    font-size: 15px;
+    width: 65%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: white;
+    padding-right: 50px;
+    padding-top: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0px 3px 10px #666666;
+}
+.posting_title{
+    width: 300px;
+    height: 40px;
+    line-height: 18px;
+}
+.posting_text{
+    width: 500px;
+    min-height: 20px;
+    max-height: 110px;
+    outline: 0;
+    word-wrap: break-word;
+    overflow-y: auto;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 1px 1px 1px grey;
+}

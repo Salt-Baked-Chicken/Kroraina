@@ -1,12 +1,11 @@
 package com.Kroraina.BaseDao;
 
+import com.Kroraina.JavaBean.user_bean;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Properties;
+import java.sql.*;
+import java.util.*;
 
 public class basedaoImpl implements basedao {
     static String driver=null;
@@ -49,33 +48,69 @@ public class basedaoImpl implements basedao {
         return connection;
     }
 
-    public int executeUpdate(String sql,Object[] params){
-        Connection con = getCon();
-        PreparedStatement pstmt=null;
-        int y=0;
+    public List<user_bean> select(String sql,Object[] params){
+        Connection conn = getCon();
+        PreparedStatement psmt = null;
+        ResultSet rs = null;
+        List<user_bean> list = new ArrayList<user_bean>();
+        user_bean user;
         try {
-            pstmt = con.prepareStatement(sql);
+            psmt = conn.prepareStatement(sql);
             if(params!=null){
                 for(int i=0;i<params.length;i++){
-                    pstmt.setObject(i+1,params[i]);
+                    psmt.setObject(i+1,params[i]);
                 }
             }
-            y = pstmt.executeUpdate();
+            rs = psmt.executeQuery();
+            while (rs.next()){
+                if (rs.getString("user_name") == null){
+                    return list;
+                }else {
+                    user = new user_bean();
+                    user.setAccount(rs.getString("user_name"));
+                    user.setPassworld(rs.getString("user_password"));
+                }
+                list.add(user);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
-            closeAll(pstmt,con);
+            closeAll(conn,psmt,rs);
+        }
+        return list;
+    }
+
+    public int executeUpdate(String sql,Object[] params){
+        Connection conn = getCon();
+        PreparedStatement psmt=null;
+        ResultSet rs = null;
+        int y=0;
+        try {
+            psmt = conn.prepareStatement(sql);
+            if(params!=null){
+                for(int i=0;i<params.length;i++){
+                    psmt.setObject(i+1,params[i]);
+                }
+            }
+            y = psmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            closeAll(conn,psmt,rs);
         }
         return y;
     }
 
-    public void closeAll(PreparedStatement pstmt,Connection conn){
+    public void closeAll(Connection conn, PreparedStatement psmt, ResultSet rs){
         try {
-            if(pstmt!=null){
-                pstmt.close();
+            if(psmt!=null){
+                psmt.close();
             }
             if(conn!=null){
                 conn.close();
+            }
+            if (rs!=null){
+                rs.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
